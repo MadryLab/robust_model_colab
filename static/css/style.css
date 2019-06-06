@@ -1,0 +1,24 @@
+body {
+    text-align: center;
+}
+
+.classbutton {
+    margin: 5px;
+}
+
+#mycanvas {
+    margin: 10px;
+}
+
+.selectedShape {
+    color: white;
+    background: #6c757d;
+}
+
+#loading {
+    top: 0;
+    left: 0;
+    height: 200px;
+    width: 200px;
+    z-index: 9999999;
+}

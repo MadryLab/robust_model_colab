@@ -1,0 +1,81 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://localhost:{{port}}/static/css/style.css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">{{ jscolor_script }}</script>
+    <script type="text/javascript">{{ index_script }}</script>
+    <script type="text/javascript">{{ draw_script }}</script>
+</head>
+<body id="{{ ds }}">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <h2>Color</h2>
+            <input class="jscolor colorbutton btn" id="colorpicker" value="ab2567">
+
+            <h2>Shape</h2>
+            {% for s in ['circle', 'rectangle', 'brush'] %}
+                <button type="button"
+                        class="btn btn-outline-secondary shapebutton">
+                    {{ s }}</button>
+            {% endfor %}
+            <h2>Image</h2>
+            <button type="button"
+                    class="btn btn-outline-secondary resetbutton">
+                reset</button>
+            {% for s in starters %}
+            <button type="button"
+                    class="btn btn-outline-secondary imgbutton">
+                {{ s }}</button>
+            {% endfor %}
+            <h2>Anchor</h2>
+            <button type="button"
+                    class="btn btn-outline-secondary setanchor">
+                set anchor</button>
+            <button type="button"
+                    class="btn btn-outline-secondary resetanchor">
+                clear anchor</button>
+        </div>
+        <div class="col-md-6">
+            <div id="canvasHolder">
+                <div id="dragDiv"></div>
+                <canvas id="myCanvas" width="256" height="256"> </canvas>
+            </div>
+
+            <div class="row">
+            {% for c in classes %}
+                <button type="button"
+                        class="btn btn-outline-secondary classbutton col-md-2"
+                        id="{{ c[0] }}">{{ c[1] }}</button>
+            {% endfor %}
+            </div>
+	    <div id="loading" style="background: url('https://localhost:{{port}}/loading') no-repeat center center;"></div>
+        </div>
+        <div class="col-md-3">
+            <table class="table table-striped">
+            <tr><th>Class</th><th>Logit Value</th></tr>
+            {% for c in classes %}
+                <tr>
+                    <td> {{ c[1] }} </td>
+                    <td> <span id="logit-{{ c[0] }}"></span> </td>
+                </tr>
+            {% endfor %}
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- Popper.js, then Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script
+>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
